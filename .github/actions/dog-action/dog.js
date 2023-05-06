@@ -1,7 +1,6 @@
 const request = require("request-promise");
 
-
-const doglist = {
+const options = {
     method: "GET",
     uri: "https://dog.ceo/api/breeds/list/all",
     headers: {
@@ -14,7 +13,7 @@ const doglist = {
 
 
 async function getDogList(){
-    const res = await request(doglist);
+    const res = await request(options);
     return res.dogbreed;
 }
 

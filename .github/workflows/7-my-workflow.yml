@@ -36,9 +36,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Let's get all the branches
-  action:
-    name: Action Deployment
-      steps:
+  js_action:
+    name: Joke Action and Dog Action
+    runs-on: ubuntu-latest
+    steps:
       - name: ha-ha
         uses: ./.github/actions/joke-action
       - name: dog-list

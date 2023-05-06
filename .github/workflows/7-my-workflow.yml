@@ -40,6 +40,8 @@ jobs:
     name: Joke Action and Dog Action
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: ha-ha
         uses: ./.github/actions/joke-action
       - name: dog-list

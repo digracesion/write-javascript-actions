@@ -1,11 +1,16 @@
 name: Step 7, JS Actions
 
 on:
-  create:
+  workflow_dispatch:
+  issues:
+    types: [labeled]
 
 permissions:
   content: write
-  
+
+env:
+  EXPECTED_METADATA: "second joke"
+
 jobs:
   get_current_step:
     name: Check current step number
@@ -18,13 +23,10 @@ jobs:
           echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-  joke-action:
-    name: Joke Action Deployment
-    steps:
+  action:
+    name: Action Deployment
+      steps:
       - name: ha-ha
         uses: ./.github/actions/joke-action
-  dog-action:
-    name: Dog Action Deployment
-    steps:
       - name: dog-list
         uses: ./.github/actions/dog-action

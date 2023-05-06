@@ -433,7 +433,7 @@ You can make these changes in your repository by opening [`my-workflow.yml`](/.g
 
 </details>
   
-<details id=6>
+<details id=6 close>
 
 <summary><h2> Step 6: Trigger the joke action</h2></summary>
 
@@ -450,7 +450,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
  
 </details>
 
-<details id=7 close>
+<details id=7 open>
 <summary><h2>Finish</h2></summary>
 
 <img src=https://octodex.github.com/images/poptocat_v2.png alt=celebrate width=300 align=right>

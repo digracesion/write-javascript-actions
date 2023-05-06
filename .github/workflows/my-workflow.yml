@@ -1,15 +1,42 @@
 name: JS Actions
 
 on:
+  workflow_dispatch:
   issues:
     types: [labeled]
 
+permissions:
+  content: write
+
+env:
+  EXPECTED_METADATA: "second joke"
+  
 jobs:
   action:
     if: ${{ !github.event.repository.is_template }}
     runs-on: ubuntu-latest
-
+    get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - id: get_step
+        run: |
+          echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+    on_my_workflow_run:
+      name: Check if my_workflow has run
+      needs: get_current_step
     steps:
       - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: ha-ha
         uses: ./.github/actions/joke-action
+      - name: doglist
+        uses: ./.github/actions/dog-action
+      - name: Dump GitHub comment context
+        id: github_comment_step
+        run: echo '${{ toJSON(github.event) }}'

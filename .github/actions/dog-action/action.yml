@@ -1,0 +1,11 @@
+name: "dog api action"
+
+description: "use an external API to retrieve and display pictures of dogs"
+
+outputs:
+  dog-output:
+    description: The resulting random dog image from all the dogs collection by dogceo
+
+runs:
+  using: "node16"
+  main: "main.js"

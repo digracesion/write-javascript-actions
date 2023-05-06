@@ -17,8 +17,6 @@ jobs:
       runs-on: ubuntu-latest
     on_my_workflow_run:
       name: Check if my_workflow has run
-      needs: get_current_step
-      if: ${{ !github.event.repository.is_template }}
       runs-on: ubuntu-latest
       steps:
         - name: Checkout

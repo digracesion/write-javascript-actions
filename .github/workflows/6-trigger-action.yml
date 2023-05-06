@@ -64,10 +64,10 @@ jobs:
       # Update README to close <details id=6>
       # and open <details id=X>
       # and set STEP to 'X'
-      - name: Update to step X
+      - name: Update to step 7
         if: contains(github.event, ${{ env.EXPECTED_METADATA }})
         uses: skills/action-update-step@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           from_step: 6
-          to_step: X
+          to_step: 7

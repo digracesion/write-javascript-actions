@@ -1,30 +1,27 @@
 name: JS Actions
 
 on:
+  workflow_dispatch:
   issues:
     types: [labeled]
 
 permissions:
   content: write
-
-env:
-  EXPECTED_METADATA: "second joke"
   
 jobs:
+  get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+  on_my_workflow_run:
+    name: Check if my_workflow has run
+    needs: get_current_step
   action:
-    get_current_step:
-      name: Check current step number
-      runs-on: ubuntu-latest
-    on_my_workflow_run:
-      name: Check if my_workflow has run
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
-        - name: ha-ha
-          if: contains(github.event, ${{ env.EXPECTED_METADATA }})
-          uses: ./.github/actions/joke-action
-        - name: dog-list
-          uses: ./.github/actions/dog-action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: ha-ha
+        uses: ./.github/actions/joke-action
+      - name: dog-list
+        uses: ./.github/actions/dog-action
